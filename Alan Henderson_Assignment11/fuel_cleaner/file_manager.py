@@ -1,5 +1,7 @@
+
+
 # File Name : Alan Henderson_Assignment11
-# Student Name: Jack Driehaus
+# Student Name: Jack Driehaus, Madison Geier
 # email:  driehajl@mail.uc.edu
 # Assignment Number: Assignment 11
 # Due Date:   04/17/2025
@@ -8,7 +10,7 @@
 # Brief Description of the assignment:  clean up some data in a csv file and write the cleaned data into a new file
 
 # Brief Description of what this module does: reads and writes the csv files
-# Citations: chatgpt.com
+# Citations: chatgpt.com https://www.zippopotam.us/
 
 # Anything else that's relevant:
 
