@@ -1,5 +1,7 @@
+
+
 # File Name : Alan Henderson_Assignment11
-# Student Name: Jack Driehaus
+# Student Name: Jack Driehaus, Madison Geier
 # email:  driehajl@mail.uc.edu
 # Assignment Number: Assignment 11
 # Due Date:   04/17/2025
@@ -8,14 +10,29 @@
 # Brief Description of the assignment:  clean up some data in a csv file and write the cleaned data into a new file
 
 # Brief Description of what this module does: Cleans up the csv file by doing things like getting rid of the pepsi rows
-# Citations: chatgpt.com
+# Citations: chatgpt.com https://www.zippopotam.us/
 
 # Anything else that's relevant:
 
 
+import re
+
 class FuelDataCleaner:
     def __init__(self, api_client):
         self.api_client = api_client
+        self.zip_cache = {}  # cache to avoid repeated API calls for the same city/state
+
+    def has_zip(self, full_address):
+        return bool(re.search(r'\b\d{5}\b$', full_address.strip()))
+
+    def extract_city_state(self, full_address):
+        try:
+            parts = [part.strip() for part in full_address.split(',')]
+            city = parts[1]
+            state = parts[2].split()[0]
+            return city.title(), state.upper()
+        except Exception:
+            return None, None
 
     def clean_data(self, rows):
         unique_rows = []
@@ -37,11 +54,19 @@ class FuelDataCleaner:
             except:
                 row['Gross Price'] = "0.00"
 
-            if row.get('City') and row.get('Full Address') and not any(char.isdigit() for char in row['Full Address'][-5:]):
-                zip_code = self.api_client.get_zip_code(row['City'])
-                if zip_code:
-                    row['Full Address'] += f' {zip_code}'
+            full_address = row.get('Full Address', '')
+            if full_address and not self.has_zip(full_address):
+                city, state = self.extract_city_state(full_address)
+                if city and state:
+                    cache_key = (city, state)
+                    if cache_key in self.zip_cache:
+                        zip_code = self.zip_cache[cache_key]
+                    else:
+                        zip_code = self.api_client.get_zip_code(city, state)
+                        self.zip_cache[cache_key] = zip_code
 
+                    if zip_code:
+                        row['Full Address'] = full_address.strip().rstrip(',') + f' {zip_code}'
 
             unique_rows.append(row)
 
