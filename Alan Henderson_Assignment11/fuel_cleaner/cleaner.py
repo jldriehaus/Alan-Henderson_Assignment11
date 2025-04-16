@@ -1,5 +1,3 @@
-
-
 # File Name : Alan Henderson_Assignment11
 # Student Name: Jack Driehaus, Madison Geier
 # email:  driehajl@mail.uc.edu
@@ -12,7 +10,7 @@
 # Brief Description of what this module does: Cleans up the csv file by doing things like getting rid of the pepsi rows
 # Citations: chatgpt.com https://www.zippopotam.us/
 
-# Anything else that's relevant:
+# Anything else that's relevant: We could not figure out how to use the zipcodebase API you provided so we used zippopotam.us which is basically the same thing and it worked
 
 
 import re

@@ -1,5 +1,3 @@
-
-
 # File Name : Alan Henderson_Assignment11
 # Student Name: Jack Driehaus, Madison Geier
 # email:  driehajl@mail.uc.edu
@@ -12,7 +10,7 @@
 # Brief Description of what this module does: Gets the zip code for the addresses that are missing one
 # Citations: chatgpt.com https://www.zippopotam.us/
 
-# Anything else that's relevant:
+# Anything else that's relevant: We could not figure out how to use the zipcodebase API you provided so we used zippopotam.us which is basically the same thing and it worked
 
 
 import requests

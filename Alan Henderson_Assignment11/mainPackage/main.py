@@ -1,5 +1,3 @@
-
-
 # File Name : Alan Henderson_Assignment11
 # Student Name: Jack Driehaus, Madison Geier
 # email:  driehajl@mail.uc.edu, geierml@mail.uc.edu
